@@ -54,6 +54,8 @@ export function checkGameEnd() {
     messageText.textContent = 'You Win';
   }
 
+  // 
+
   if (lose) {
     messageText.textContent = 'You Lose';
     board.forEach(row => {
