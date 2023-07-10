@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  min-height: 100%;
+  width: 100vw;
   margin: 0;
   background-color: #333;
   display: flex;
@@ -58,3 +67,22 @@ body {
 .board > [data-status="marked"] {
   background-color: yellow;
 } 
+
+.reset-btn {
+  font-family: Montserrat, sans-serif;
+  font-size: 24px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* @media screen and (max-width: 760px) {
+  .board {
+    width: 90vw;
+    height: auto;
+  }
+
+  .tile {
+    width: 30px;
+    height: auto;
+  }
+} */

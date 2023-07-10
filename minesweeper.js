@@ -18,6 +18,7 @@ export function createBoard(boardSize, numberOfMines){
     const row = [];
     for (let y = 0; y < boardSize; y++) {
       const element = document.createElement('div');
+      element.classList.add('tile')
       element.dataset.status = TILE_STATUSES.HIDDEN;
       const tile = {
         element,

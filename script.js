@@ -2,6 +2,8 @@ import { createBoard, markTile, TILE_STATUSES, checkWin, checkLose, nearbyTiles}
 export const BOARD_SIZE = 10;
 export const NUMBER_OF_MINES = 12;
 
+const resetBtn = document.querySelector('.reset-btn');
+
 const body = document.body;
 let board = createBoard(BOARD_SIZE, NUMBER_OF_MINES);
 let boardElement = document.querySelector('.board');
@@ -72,13 +74,15 @@ const resetGame = () => {
   boardElement.removeEventListener('click', stopProp, {capture: true})
   boardElement.removeEventListener('contextmenu', stopProp, {capture: true})
   body.removeChild(boardElement);
+  body.removeChild(resetBtn);
   boardElement = document.createElement('div');
   boardElement.classList.add('board');
   wasMineEncountered = false;
   numOfCorrectTiles = 0;
   minesLeftText = NUMBER_OF_MINES;
   messageText.textContent = `Mines left: ${minesLeftText}`;
-  body.appendChild(boardElement);
+  body.append(boardElement, resetBtn);
+  resetBtn.addEventListener('click', resetGame);
   board = createBoard(BOARD_SIZE, NUMBER_OF_MINES);
   initializeGame(board);
 }
@@ -109,6 +113,10 @@ export function revealTile(board, tile) {
 function stopProp(e) {
   e.stopImmediatePropagation();
 }
+
+// Event listeners ----------------
+
+resetBtn.addEventListener('click', resetGame);
 
 // Populate a board with tiles / mines
 // Left click on tiles 
